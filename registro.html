@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      crossorigin="anonymous"
+    />
+    <title>Aury</title>
+    <link rel="icon" href="logo.jpeg" />
+    <link rel="stylesheet" href="style.css" />
+
+
+  </head>
+  <body>
+    <div class="contenedor-principal">
+      <div class="contenedor-formularios">
+        <div class="login-registro">
+          <!-- Formulario de Iniciar sesión -->
+          <form action="#" class="formulario-inicio">
+            <h2 class="titulo">Inicia sesión</h2>
+            <div class="campo-entrada">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Usuario" />
+            </div>
+            <div class="campo-entrada">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Contraseña" />
+            </div>
+            <input type="submit" value="Inicia sesión" class="btn solido" />
+            <p class="texto-redes">O inicia sesión con redes sociales</p>
+            <div class="iconos-redes">
+              <a href="#" class="icono-red">
+                <i class="fab fa-google"></i>
+              </a>
+            </div>
+          </form>
+
+          <!-- Formulario de Registro -->
+          <form action="#" class="formulario-registro">
+            <h2 class="titulo">Crear cuenta</h2>
+            <div class="campo-entrada">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Nombre" />
+            </div>
+            <div class="campo-entrada">
+              <i class="fas fa-envelope"></i>
+              <input type="email" placeholder="Correo electrónico" />
+            </div>
+            <div class="campo-entrada">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Contraseña" />
+            </div>
+            <input type="submit" class="btn" value="Registrarse" />
+            <p class="texto-redes">O regístrate con redes sociales</p>
+            <div class="iconos-redes">
+              <a href="#" class="icono-red">
+                <i class="fab fa-google"></i>
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="contenedor-paneles">
+        <!-- Panel izquierdo -->
+        <div class="panel panel-izquierdo">
+          <div class="contenido">
+            <h2>¿Nuevo aquí?</h2>
+            <p>Regístrate. Únete y encuentra un espacio donde ser escuchado, apoyado y acompañado cada día.</p>
+            <button class="btn transparente" id="btn-registro">Regístrate</button>
+          </div>
+          <img src="img/log.svg" class="imagen" alt="" />
+        </div>
+
+        <!-- Panel derecho -->
+        <div class="panel panel-derecho">
+          <div class="contenido">
+            <h3>Inicia sesión</h3>
+            <p>Inicia sesión y permítenos acompañarte.</p>
+            <button class="btn transparente" id="btn-inicio">Inicia sesión</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="aplicacion.js"></script>
+  </body>
+</html>
