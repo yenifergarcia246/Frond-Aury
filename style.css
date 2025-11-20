@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
+
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +11,7 @@ body,
 input {
   font-family: "Poppins", sans-serif;
 }
-
+/* Inicio de la seccion de registro y inicio de sesion */
 .contenedor-principal {
   position: relative;
   width: 100%;
@@ -272,6 +273,65 @@ form.formulario-inicio {
   pointer-events: all;
 }
 
+
+.aury-ayuda {
+  position: relative;
+  width: 100%;
+  min-height: 700px;
+  background-color: #ffeede;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ayuda-grid .item p {
+  background-color: white;       
+  border-radius: 50%;            
+  display: inline-block;         
+  padding: 10px 15px;            
+  margin-top: 10px;              
+  font-weight: 500;              
+  text-align: center; 
+  border-radius: 10%;           
+}
+
+
+.aury-ayuda h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 26px;
+  max-width: 250px;
+  z-index: 2;
+  color: #060505;
+  font-family: 'Arial';
+}
+
+.ayuda-grid {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.item { position: absolute; width: 120px; text-align: center; font-size: 14px; color: #110f0f; }
+.item img { 
+width: 100px; 
+height: 100px; 
+object-fit: contain;
+margin-bottom: 5px; 
+transition: transform 0.3s ease; /* Transición suave */
+cursor: pointer;
+} 
+.item img:hover {
+  transform: translateY(-10px);
+}
+
+ /* Posiciones circulares (como un reloj de 8 posiciones) */ .item:nth-child(1) { /* Desahogarte */ top: 0%; left: 50%; transform: translate(-50%, -50%); } .item:nth-child(2) { /* Calmar la ansiedad */ top: 20%; left: 85%; transform: translate(-50%, -50%); } .item:nth-child(3) { /* Dinámicas para sentirte mejor */ top: 50%; left: 100%; transform: translate(-50%, -50%); } .item:nth-child(4) { /* Pedir consejos */ top: 80%; left: 85%; transform: translate(-50%, -50%); } .item:nth-child(5) { /* Expresar lo que no puedes decir */ top: 90%; left: 50%; transform: translate(-50%, -50%); } .item:nth-child(6) { /* Mejorar estado de ánimo */ top: 80%; left: 15%; transform: translate(-50%, -50%); } .item:nth-child(7) { /* Sentirte acompañado/a */ top: 50%; left: 0%; transform: translate(-50%, -50%); } .item:nth-child(8) { /* Cuidar tu salud emocional */ top: 20%; left: 15%; transform: translate(-50%, -50%); }
+
 /* Responsive */
 @media (max-width: 870px) {
   .contenedor-principal {
@@ -403,6 +463,54 @@ form.formulario-inicio {
 }
 
 
+@media screen and (max-width: 768px) {
+  .aury-ayuda {
+    flex-direction: column;
+    min-height: auto;
+    padding: 20px 10px;
+  }
+
+  /* para subirel texto */
+  .aury-ayuda h2 {
+    position: static;
+    transform: none;
+    margin-top: -25px; 
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 22px;
+  }
+
+  /* 🔹 Reorganiza los iconos en pares más centrados */
+  .ayuda-grid {
+    position: static;
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px; /* 🔸 aumenta el espacio entre pares */
+    justify-items: center;
+    align-items: center;
+    padding-left: 140px; 
+  }
+
+  .item {
+    position: static;
+    width: 90%;
+    text-align: center;
+  }
+
+  .item img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .ayuda-grid .item p {
+    font-size: 14px;
+    padding: 8px 10px;
+    border-radius: 8px;
+  }
+}
+
 .fondo {
   background-image: url('fondo.png'); 
   background-size: cover;
@@ -494,3 +602,215 @@ form.formulario-inicio {
 
 }
 
+.imagenes {
+  background: linear-gradient(to bottom, #e99e5c 70%, #ffffff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 250px;
+  flex-wrap: wrap;
+  padding: 90px 0 120px 0;
+}
+
+/* Contenedor de cada imagen + texto */
+.chat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Imagen */
+.chat img {
+  width: 400px;
+  border-radius: 50%; 
+  transition: transform 0.3s ease;
+}
+
+.chat img:hover {
+  transform: scale(1.07);
+}
+
+/* Cajita blanca del texto */
+.chat p {
+  color: #000e;
+  background: rgb(255, 255, 255);
+  padding: 12px 20px;
+  border-radius: 18px;
+  font-size: 18px;
+  text-align: center;
+  width: max-content;
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.25),
+    0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Texto explicatorio arriba */
+.texto-explicacion {
+  background-color: #e99e5c;
+  text-align: center;
+  padding-top: 80px;
+}
+
+.texto-explicacion h2 {
+  font-size: 26px;
+  color: rgb(19, 17, 17);
+  max-width: 800px;
+  margin: auto;
+  line-height: 1.4;
+  font-weight: 800;
+  text-shadow: 2px 2px 8px rgba(116, 110, 110, 0.93);
+  
+}
+
+
+@media (max-width: 768px) {
+
+  .imagenes {
+    gap: 80px;
+    padding: 60px 0 80px 0;
+  }
+
+  .contenido img {
+    width: 230px; /* se reduce */
+  }
+
+  .contenido p {
+    font-size: 15px;
+    padding: 8px 15px;
+  }
+
+  .texto-explicacion h2 {
+    font-size: 20px;
+  }
+
+}
+
+.waves {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+}
+
+.wave {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    top: 10px;
+    left: 0;
+    background: url("wave.png");
+    filter: sepia(100%) saturate(300%) hue-rotate(-10deg);
+    background-size: 1000px 100px;
+    animation: animatewave 3s linear infinite;
+}
+
+@keyframes animatewave {
+    0% { background-position-x: 0px; }
+    100% { background-position-x: 1000px; }
+}
+
+
+footer {
+    background:#e68f44;
+    padding: 40px 0;
+    color: #fff;
+    font-family: Arial;
+}
+
+/* Logo + nombre juntos */
+.aury-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+/* Tamaño del logo */
+.aury-logo {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+/* Texto descriptivo */
+.aury-description {
+    color: #f2e9e9;
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 260px;
+    font-family: Arial;
+}
+
+
+.footer-container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-col {
+    width: 22%;
+    min-width: 200px;
+    margin-bottom: 20px;
+}
+
+.footer-col h4 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.footer-col h4::before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: #bf0622;
+    animation: expand 2s infinite alternate;
+}
+
+@keyframes expand {
+    0% { width: 50px; }
+    100% { width: 120px; }
+}
+
+
+.social-links a {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 20px;
+    color: #faf7f2;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    color: #f7610b;
+    transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+    .footer-col {
+        width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-col {
+        width: 100%;
+    }
+}
+
+footer .copyright {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    font-size: 14px;
+    color: #fff;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}

@@ -9,13 +9,15 @@
       crossorigin="anonymous"
     />
     <title>Aury</title>
-    <link rel="icon" href="logo.jpeg" />
+    <link rel="icon" href="logo.png" />
     <link rel="stylesheet" href="style.css" />
 
-
+  <!-- Este HTML es del inicio de sesion y registro de Aury -->
   </head>
   <body>
+
     <div class="contenedor-principal">
+
       <div class="contenedor-formularios">
         <div class="login-registro">
           <!-- Formulario de Iniciar sesión -->
@@ -64,8 +66,9 @@
         </div>
       </div>
 
+
       <div class="contenedor-paneles">
-        <!-- Panel izquierdo -->
+        <!-- animacion izquierda -->
         <div class="panel panel-izquierdo">
           <div class="contenido">
             <h2>¿Nuevo aquí?</h2>
@@ -75,7 +78,7 @@
           <img src="img/log.svg" class="imagen" alt="" />
         </div>
 
-        <!-- Panel derecho -->
+        <!-- animacion derecha -->
         <div class="panel panel-derecho">
           <div class="contenido">
             <h3>Inicia sesión</h3>
@@ -85,6 +88,27 @@
         </div>
       </div>
     </div>
+
+     <!-- Conexión a Firebase -->
+    <script type="module">
+      // Importar Firebase App
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+
+      // Configuración del proyecto
+      const firebaseConfig = {
+        apiKey: "AIzaSyCk5klRFE7GK5dPc1mwWPl6cFaKbo0O2e8",
+        authDomain: "aury-8048b.firebaseapp.com",
+        projectId: "aury-8048b",
+        storageBucket: "aury-8048b.firebasestorage.app",
+        messagingSenderId: "648275207257",
+        appId: "1:648275207257:web:dcbf3477db49457098bd48"
+      };
+
+      // Inicializar Firebase
+      const app = initializeApp(firebaseConfig);
+      console.log(" Firebase conectado correctamente");
+    </script>
+
 
     <script src="aplicacion.js"></script>
   </body>
