@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
-
 * {
   margin: 0;
   padding: 0;
@@ -180,7 +179,7 @@ form.formulario-inicio {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background-image: url('registro.jpg');
+  background-image: url('image/registro.jpg');
   background-position: 1000px -110px;
   transition: 1.8s ease-in-out;
   border-radius: 50%;
@@ -512,7 +511,7 @@ cursor: pointer;
 }
 
 .fondo {
-  background-image: url('fondo.png'); 
+  background-image: url('image/fondo.png'); 
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -631,7 +630,6 @@ cursor: pointer;
   transform: scale(1.07);
 }
 
-/* Cajita blanca del texto */
 .chat p {
   color: #000e;
   background: rgb(255, 255, 255);
@@ -645,8 +643,6 @@ cursor: pointer;
     0 0 8px rgba(0, 0, 0, 0.1);
 }
 
-
-/* Texto explicatorio arriba */
 .texto-explicacion {
   background-color: #e99e5c;
   text-align: center;
@@ -700,7 +696,7 @@ cursor: pointer;
     height: 100px;
     top: 10px;
     left: 0;
-    background: url("wave.png");
+    background: url("image/wave.png");
     filter: sepia(100%) saturate(300%) hue-rotate(-10deg);
     background-size: 1000px 100px;
     animation: animatewave 3s linear infinite;
