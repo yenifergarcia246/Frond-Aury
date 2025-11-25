@@ -11,18 +11,32 @@ btnInicio.addEventListener("click", () => {
 });
 
 
-// ESta parte es sobre la conexion que hice con el firebase
 
-// Esperar a que el contenido cargue
+// --- INICIO DE SESIÓN CON GOOGLE ---
 document.addEventListener("DOMContentLoaded", () => {
-  // Seleccionar todos los íconos de Google (login y registro)
-  const botonesGoogle = document.querySelectorAll(".icono-red .fa-google");
+  
+  // Selecciona todos los íconos de Google del HTML
+  const googleButtons = document.querySelectorAll(".google-login");
 
-  // Agregar evento a cada uno
-  botonesGoogle.forEach((boton) => {
-    boton.addEventListener("click", (e) => {
+  googleButtons.forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
       e.preventDefault();
-      alert("🔒 Próximamente podrás iniciar sesión con Google 😄");
+
+      try {
+        // Usa las funciones importadas en el HTML
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+
+        console.log("Usuario autenticado:", user.displayName);
+
+        // 👉 Redirige a tu página después del login
+        window.location.href = "index.html";
+
+      } catch (error) {
+        console.error("Error al iniciar sesión con Google:", error);
+        alert("No se pudo iniciar sesión con Google. Revisa la consola.");
+      }
     });
   });
+
 });

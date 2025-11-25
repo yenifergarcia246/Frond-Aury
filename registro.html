@@ -35,17 +35,17 @@
             <p class="texto-redes">O inicia sesión con redes sociales</p>
             <div class="iconos-redes">
               <a href="#" class="icono-red">
-                <i class="fab fa-google"></i>
+                 <i class="fab fa-google google-login"></i>
               </a>
             </div>
-          </form>
+          </form>  
 
           <!-- Formulario de Registro -->
           <form action="#" class="formulario-registro">
             <h2 class="titulo">Crear cuenta</h2>
             <div class="campo-entrada">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Nombre" />
+              <input type="text" placeholder="Nombre Completo" />
             </div>
             <div class="campo-entrada">
               <i class="fas fa-envelope"></i>
@@ -56,12 +56,6 @@
               <input type="password" placeholder="Contraseña" />
             </div>
             <input type="submit" class="btn" value="Registrarse" />
-            <p class="texto-redes">O regístrate con redes sociales</p>
-            <div class="iconos-redes">
-              <a href="#" class="icono-red">
-                <i class="fab fa-google"></i>
-              </a>
-            </div>
           </form>
         </div>
       </div>
@@ -89,25 +83,34 @@
       </div>
     </div>
 
-     <!-- Conexión a Firebase -->
     <script type="module">
-      // Importar Firebase App
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+  import {
+    getAuth,
+    GoogleAuthProvider,
+    signInWithPopup,
+  } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
 
-      // Configuración del proyecto
-      const firebaseConfig = {
-        apiKey: "AIzaSyCk5klRFE7GK5dPc1mwWPl6cFaKbo0O2e8",
-        authDomain: "aury-8048b.firebaseapp.com",
-        projectId: "aury-8048b",
-        storageBucket: "aury-8048b.firebasestorage.app",
-        messagingSenderId: "648275207257",
-        appId: "1:648275207257:web:dcbf3477db49457098bd48"
-      };
+  // Configuración de Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyCk5klRFE7GK5dPc1mwWPl6cFaKbo0O2e8",
+    authDomain: "aury-8048b.firebaseapp.com",
+    projectId: "aury-8048b",
+    storageBucket: "aury-8048b.firebasestorage.app",
+    messagingSenderId: "648275207257",
+    appId: "1:648275207257:web:dcbf3477db49457098bd48"
+  };
 
-      // Inicializar Firebase
-      const app = initializeApp(firebaseConfig);
-      console.log(" Firebase conectado correctamente");
-    </script>
+  // Inicializar Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
+  // Pasar funciones al archivo aplicacion.js
+  window.auth = auth;
+  window.provider = provider;
+  window.signInWithPopup = signInWithPopup;
+</script>
 
 
     <script src="aplicacion.js"></script>
