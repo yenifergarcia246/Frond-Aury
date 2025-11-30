@@ -1,0 +1,423 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #fff7ef; 
+    padding: 30px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 32px;
+    color: #e99e5c;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: #d87d37;
+    margin-bottom: 10px;
+}
+
+.dinamica_de_antestres,
+.dinamica_de_enojo,
+.dinamica_de_respiracion {
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+button {
+    background: #e99e5c;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    margin-top: 15px;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background .3s ease;
+}
+
+button:hover {
+    background: #e68f44;
+}
+
+span {
+    font-weight: bold;
+    color: #d87d37;
+}
+
+.vida-container {
+    width: 300px;
+    height: 25px;
+    border: 3px solid #000;
+    border-radius: 10px;
+    margin: 10px auto 20px;
+    position: relative;
+    background: #300;
+}
+
+#barraVida {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #0f0, #4dff4d);
+    border-radius: 7px;
+    transition: width 0.3s ease-out;
+}
+
+.muneco-pro {
+    width: 180px;
+    height: 330px;
+    margin: 20px auto;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+
+.muneco-pro.golpeado {
+    animation: impacto 0.25s ease-out;
+}
+
+@keyframes impacto {
+    0% { transform: scale(1) translateX(0); filter: brightness(1); }
+    25% { transform: scale(1.06) translateX(-10px); filter: brightness(1.4); }
+    50% { transform: scale(0.96) translateX(10px); }
+    100% { transform: scale(1) translateX(0); filter: brightness(1); }
+}
+
+.muneco-pro.ko {
+    animation: caer 1.2s ease forwards;
+}
+
+@keyframes caer {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(90deg) translateY(120px); }
+}
+
+.sombra {
+    width: 140px;
+    height: 25px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+    position: absolute;
+    bottom: -15px;
+    left: 20px;
+    filter: blur(6px);
+}
+
+.cabeza {
+    width: 100px;
+    height: 100px;
+    background: #ffd7b5;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 40px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+    transition: background 0.3s;
+}
+
+.ojo {
+    width: 26px;
+    height: 26px;
+    background: white;
+    position: absolute;
+    top: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.ojo-izq { left: 18px; }
+.ojo-der { right: 18px; }
+
+.pupila {
+    width: 12px;
+    height: 12px;
+    background: black;
+    border-radius: 50%;
+    margin: 7px auto;
+}
+
+.ceja {
+    width: 28px;
+    height: 6px;
+    background: #333;
+    position: absolute;
+    top: 22px;
+    border-radius: 3px;
+    transition: transform 0.2s;
+}
+
+.ceja-izq { left: 18px; transform: rotate(-12deg); }
+.ceja-der { right: 18px; transform: rotate(12deg); }
+
+.boca {
+    width: 38px;
+    height: 12px;
+    background: transparent;
+    border: 3px solid #333;
+    border-top: none;
+    border-radius: 0 0 40px 40px;
+    position: absolute;
+    bottom: 25px;
+    left: 30px;
+    transition: transform 0.2s, border 0.2s;
+}
+
+.cuerpo {
+    width: 70px;
+    height: 150px;
+    background: #6aa9ff;
+    border-radius: 30px;
+    position: absolute;
+    top: 95px;
+    left: 55px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+}
+
+.brazo {
+    width: 30px;
+    height: 120px;
+    background: #ffd7b5;
+    border-radius: 20px;
+    position: absolute;
+    top: 110px;
+    transform-origin: top center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+}
+
+.brazo-izq { left: 20px; }
+.brazo-der { right: 20px; }
+
+.pierna {
+    width: 32px;
+    height: 140px;
+    background: #444;
+    border-radius: 25px;
+    position: absolute;
+    top: 230px;
+    transition: transform 0.3s;
+}
+
+.pierna-izq { left: 53px; }
+.pierna-der { right: 53px; }
+
+.cabeza.moreton,
+.cuerpo.moreton {
+    background: #ffb0b0 !important;
+}
+
+.dinamica_de_enojo p {
+    margin-top: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.muneco-pro .ojo .pupila {
+    background: black;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin: auto;
+    margin-top: 6px;
+}
+
+.muneco-pro .boca {
+    width: 35px;
+    height: 8px;
+    background: black;
+    margin: 0 auto;
+    border-radius: 0 0 20px 20px;
+    margin-top: 10px;
+}
+
+.dolor .ojo .pupila {
+    width: 2px;
+    height: 15px;
+    background: black;
+    margin-top: 3px;
+}
+
+.dolor .boca {
+    width: 30px;
+    height: 18px;
+    border: 3px solid black;
+    border-radius: 50%;
+    border-top: none;
+    background: transparent;
+}
+
+.caido {
+    animation: caer 0.6s forwards;
+}
+
+@keyframes caer {
+    0% { transform: rotate(0deg) translateY(0); }
+    100% { transform: rotate(90deg) translateY(120px); }
+}
+
+.regenerando {
+    opacity: 0.3;
+}
+
+.regenerado {
+    animation: levantarse 0.5s forwards;
+}
+
+@keyframes levantarse {
+    0% { transform: rotate(90deg) translateY(120px); opacity: 0; }
+    100% { transform: rotate(0deg) translateY(0); opacity: 1; }
+}
+
+.muneco-pro.dolor .ojo {
+    height: 10px;             
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.muneco-pro.dolor .ojo .pupila {
+    width: 4px;
+    height: 4px;
+    margin-top: -2px;          
+}
+
+.muneco-pro.dolor .ceja-izq {
+    transform: rotate(-30deg) translateY(-4px);
+}
+
+.muneco-pro.dolor .ceja-der {
+    transform: rotate(30deg) translateY(-4px);
+}
+
+.muneco-pro.dolor .boca {
+    width: 45px;
+    height: 28px;
+    border: 4px solid #a40000;
+    border-radius: 50%;
+    background: #ff6f6f;
+    bottom: 15px;
+}
+
+.muneco-pro.dolor .cabeza {
+    transform: rotate(-8deg) translateY(-4px);
+}
+
+.muneco-pro.caido {
+    animation: caidaPro 1s ease forwards;
+}
+
+@keyframes caidaPro {
+    0%   { transform: rotate(0deg) translateY(0); }
+    20%  { transform: rotate(-10deg) translateY(5px); }
+    40%  { transform: rotate(15deg) translateY(10px); }
+    60%  { transform: rotate(-25deg) translateY(30px); }
+    85%  { transform: rotate(85deg) translateY(110px); }
+    100% { transform: rotate(90deg) translateY(125px); opacity: 0.6; }
+}
+
+.muneco-pro.caido .cabeza {
+    animation: cabezaCaida 1s ease forwards;
+}
+
+@keyframes cabezaCaida {
+    0%   { transform: rotate(0deg); }
+    40%  { transform: rotate(-15deg); }
+    80%  { transform: rotate(70deg); }
+    100% { transform: rotate(90deg); }
+}
+
+.muneco-pro.caido .brazo-izq {
+    transform: rotate(60deg);
+}
+
+.muneco-pro.caido .brazo-der {
+    transform: rotate(-60deg);
+}
+
+.muneco-pro.caido .pierna-izq {
+    transform: rotate(20deg);
+}
+
+.muneco-pro.caido .pierna-der {
+    transform: rotate(-20deg);
+}
+
+.muneco-pro.regenerado {
+    animation: levantarPro 0.7s ease forwards;
+    opacity: 1;
+}
+
+@keyframes levantarPro {
+    0%   { transform: rotate(90deg) translateY(125px); opacity: 0; }
+    80%  { transform: rotate(-5deg) translateY(-10px); opacity: 1; }
+    100% { transform: rotate(0deg) translateY(0); }
+}
+
+.container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.container h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.descripcion,
+.instruccion {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.dinamica {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#btnRespirar {
+    background: #e99e5c;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    font-size: 18px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.1s, background 0.3s;
+    width: 100%;
+    max-width: 250px;
+}
+
+#btnRespirar:active {
+    transform: scale(0.95);
+    background: #e68f44;
+}
+
+.resultado {
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.resultado .tiempo {
+    color: #d87d37;
+    font-size: 24px;
+}

@@ -1,0 +1,139 @@
+/* ------- ESTILOS GENERALES ------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #ffead6, #ffd1a1);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ------- CONTENEDOR PRINCIPAL ------- */
+.container {
+    width: 95%;
+    max-width: 480px;
+    height: 90vh;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* ------- HEADER ------- */
+.header {
+    background: #ffa559;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.header h1 {
+    margin-bottom: 5px;
+}
+
+.status {
+    margin-top: 8px;
+    font-size: 14px;
+    background: rgba(255,255,255,0.2);
+    padding: 5px 12px;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+.connecting {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: .4; }
+    100% { opacity: 1; }
+}
+
+/* ------- MENSAJES ------- */
+.chat-messages {
+    flex: 1;
+    padding: 18px;
+    overflow-y: auto;
+}
+
+.message {
+    max-width: 80%;
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    border-radius: 16px;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.ai-message {
+    background: #ffe7d1;
+    border-bottom-left-radius: 0;
+}
+
+.user-message {
+    background: #ffa559;
+    color: #fff;
+    margin-left: auto;
+    border-bottom-right-radius: 0;
+}
+
+/* ------- INPUT ------- */
+.input-container {
+    padding: 15px;
+    background: #f8f8f8;
+    border-top: 1px solid #e4e4e4;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#messageInput {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 15px;
+    background: #fff;
+}
+
+#messageInput:focus {
+    border-color: #ffa559;
+}
+
+#sendButton {
+    width: 46px;
+    height: 46px;
+    border: none;
+    border-radius: 50%;
+    background: #ffa559;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+#sendButton:hover {
+    background: #ff8b3d;
+}
+
+.char-count {
+    margin-top: 6px;
+    font-size: 13px;
+    text-align: right;
+    color: #555;
+}

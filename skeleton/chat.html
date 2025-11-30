@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Con Aury</title>
+    <link rel="stylesheet" href="chat.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Aury</h1>
+            <p>Tu asistente emocional IA</p>
+            <div class="status connecting" id="status">Conectando...</div>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message ai-message">
+                ¡Hola! Soy Aury, tu asistente emocional. Estoy aquí para escucharte y apoyarte. ¿Cómo te sientes hoy?
+            </div>
+        </div>
+        
+        <div class="input-container">
+            <div class="input-group">
+                <input type="text" id="messageInput" placeholder="Escribe cómo te sientes..." maxlength="2000">
+                <button id="sendButton">➤</button>
+            </div>
+            <div class="char-count">
+                <span id="charCount">0/2000</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dinamicas.css">
+    <title>Dinámica de Respiración</title>
+</head>
+<body>
+
+    <main class="container">
+        <header>
+            <h1>Dinámica de Respiración</h1>
+            <p class="descripcion">
+                Mantén presionado el botón para medir tu tiempo de respiración.
+            </p>
+        </header>
+
+        <section class="dinamica">
+            <p class="instruccion">Presiona y mantén para comenzar:</p>
+
+            <button id="btnRespirar" aria-label="Presionar y mantener para medir respiración">
+                Presionar y Mantener
+            </button>
+
+            <div class="resultado">
+                <span>Tiempo:</span>
+                <span id="tiempoRespirar" class="tiempo">0</span>
+                <span>segundos</span>
+            </div>
+        </section>
+    </main>
+
+    <script src="dinamicas.js"></script>
+</body>
+</html>

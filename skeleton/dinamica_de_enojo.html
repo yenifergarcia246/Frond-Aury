@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinámica de Enojo</title>
+    <link rel="stylesheet" href="dinamicas.css">
+</head>
+<body>
+
+<h1>Dinámica de Enojo</h1>
+
+<div class="dinamica_de_enojo">
+
+    <div class="vida-container">
+        <div id="barraVida"></div>
+    </div>
+
+    <h2>Golpea al muñeco</h2>
+    <p>Haz clic para golpear. Cuando su vida llegue a 0, caerá al suelo.</p>
+
+    <div id="btnGolpe" class="muneco-pro">
+
+        <div class="cabeza">
+            <div class="ojo ojo-izq"><div class="pupila"></div></div>
+            <div class="ojo ojo-der"><div class="pupila"></div></div>
+            <div class="boca"></div>
+            <div class="ceja ceja-izq"></div>
+            <div class="ceja ceja-der"></div>
+        </div>
+
+        <div class="cuerpo"></div>
+
+        <div class="brazo brazo-izq"></div>
+        <div class="brazo brazo-der"></div>
+
+        <div class="pierna pierna-izq"></div>
+        <div class="pierna pierna-der"></div>
+
+        <div class="sombra"></div>
+    </div>
+
+    <p>Golpes: <span id="contadorGolpes">0</span></p>
+</div>
+
+<audio id="sonidoGolpe" src="sounds/golpe.mp3"></audio>
+<audio id="sonidoDano" src="sounds/dolor.mp3"></audio>
+<audio id="sonidoKO" src="sounds/ko.mp3"></audio>
+
+<script src="dinamicas.js"></script>
+</body>
+</html>
