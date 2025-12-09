@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aury</title>
+    <title>Aury - Tu compañero emocional</title>
     <link rel="icon" href="image/logo.png">
     <link rel="stylesheet" href="style.css">
     <link
@@ -11,7 +11,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
       crossorigin="anonymous"
     />
-    
 </head>
 <body>
 
@@ -21,8 +20,9 @@
     <h1>Aury</h1>
   </div>
 
-  <div class="contenedor-boton">
-    <a href="registro.html" class="boton-iniciar">Iniciar sesión</a>
+  <div class="contenedor-boton" id="contenedor-boton">
+    <!-- El botón cambia según si hay sesión o no -->
+    <a href="registro.html" class="boton-iniciar" id="boton-sesion">Iniciar sesión</a>
   </div>
 </div>
 
@@ -94,14 +94,14 @@
 
 <section class="imagenes">
 
-  <a href="chat.html" class="chat-link">
+  <a href="chat.html" class="chat-link" id="chat-link">
     <div class="chat">
       <img src="image/chatear.png" alt="Chatea con Aury" />
       <p>Cuéntame cómo te sientes, estoy aquí contigo</p>
     </div>
   </a>
 
-  <a href="inicio_de_dinamicas.html" class="chat-link">
+  <a href="inicio_de_dinamicas.html" class="chat-link" id="dinamicas-link">
       <div class="chat">
           <img src="image/Dinamicass.png" alt="Realizar dinámicas para sentirte mejor" />
           <p>Explora dinámicas para sentirte mejor</p>
@@ -162,6 +162,100 @@
     © 2025 Aury – Todos los derechos reservados.
   </div>
 </footer>
+
+<!-- Script para manejar la sesión en index.html -->
+<script>
+// Verificar sesión al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    const usuario = obtenerUsuario();
+    const botonSesion = document.getElementById('boton-sesion');
+    const chatLink = document.getElementById('chat-link');
+    const dinamicasLink = document.getElementById('dinamicas-link');
+    
+    if (usuario) {
+        // Si hay sesión, cambiar el botón
+        if (botonSesion) {
+            botonSesion.textContent = 'Cerrar sesión';
+            botonSesion.href = '#';
+            botonSesion.onclick = function(e) {
+                e.preventDefault();
+                cerrarSesion();
+            };
+            botonSesion.style.backgroundColor = '#ff4444'; // Rojo para cerrar sesión
+        }
+        
+        // Mostrar indicador de sesión
+        mostrarIndicadorSesion(usuario);
+        
+        // Los enlaces funcionan normalmente
+        if (chatLink) chatLink.onclick = null;
+        if (dinamicasLink) dinamicasLink.onclick = null;
+        
+    } else {
+        // Si no hay sesión, los enlaces llevan al registro
+        if (chatLink) {
+            chatLink.onclick = function(e) {
+                e.preventDefault();
+                alert('Por favor inicia sesión primero');
+                window.location.href = 'registro.html';
+            };
+        }
+        
+        if (dinamicasLink) {
+            dinamicasLink.onclick = function(e) {
+                e.preventDefault();
+                alert('Por favor inicia sesión primero');
+                window.location.href = 'registro.html';
+            };
+        }
+    }
+});
+
+// Función para obtener usuario del localStorage
+function obtenerUsuario() {
+    try {
+        const usuarioData = localStorage.getItem('aury_usuario');
+        return usuarioData ? JSON.parse(usuarioData) : null;
+    } catch {
+        return null;
+    }
+}
+
+// Función para mostrar indicador de sesión
+function mostrarIndicadorSesion(usuario) {
+    const indicador = document.createElement('div');
+    indicador.className = 'indicador-sesion';
+    indicador.innerHTML = `
+        <div style="display:flex; align-items:center; gap:8px;">
+            <i class="fas fa-user-circle"></i>
+            <span style="font-weight: bold;">${usuario.nombre}</span>
+        </div>
+    `;
+    
+    indicador.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 100px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 8px 15px;
+        border-radius: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+        font-size: 14px;
+        backdrop-filter: blur(5px);
+    `;
+    
+    document.body.appendChild(indicador);
+}
+
+// Función para cerrar sesión
+function cerrarSesion() {
+    if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+        localStorage.removeItem('aury_usuario');
+        window.location.reload();
+    }
+}
+</script>
 
 </body>
 </html>

@@ -11,6 +11,8 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     crossorigin="anonymous"
   />
+  <!-- SweetAlert2 para alertas bonitas -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -20,12 +22,12 @@
     <div class="contenedor-formularios">
       <div class="login-registro">
 
-        <!-- Formulario de Inicio -->
+        <!-- Formulario de Inicio (CON BOTÓN GOOGLE) -->
         <form action="#" class="formulario-inicio">
           <h2 class="titulo">Inicia sesión</h2>
           <div class="campo-entrada">
             <i class="fas fa-user"></i>
-            <input type="text" name="usuario" placeholder="Usuario" required />
+            <input type="text" name="usuario" placeholder="Correo electrónico" required />
           </div>
           <div class="campo-entrada">
             <i class="fas fa-lock"></i>
@@ -36,14 +38,19 @@
           <div class="iconos-redes">
             <a href="#" class="icono-red"><i class="fab fa-google"></i></a>
           </div>
+          <p class="texto-volver">
+            <a href="index.html" style="color: #667eea; text-decoration: none;">
+              <i class="fas fa-arrow-left"></i> Volver al inicio
+            </a>
+          </p>
         </form>
 
-        <!-- Formulario de Registro -->
+        <!-- Formulario de Registro (CON CHECKBOX, SIN BOTÓN GOOGLE) -->
         <form id="registroForm" class="formulario-registro">
           <h2 class="titulo">Crear cuenta</h2>
           <div class="campo-entrada">
             <i class="fas fa-user"></i>
-            <input type="text" name="nombre" placeholder="Nombre" required />
+            <input type="text" name="nombre" placeholder="Nombre completo" required />
           </div>
           <div class="campo-entrada">
             <i class="fas fa-envelope"></i>
@@ -53,11 +60,27 @@
             <i class="fas fa-lock"></i>
             <input type="password" name="password" placeholder="Contraseña" required />
           </div>
-          <input type="submit" class="btn" value="Registrarse" />
-          <p class="texto-redes">O regístrate con redes sociales</p>
-          <div class="iconos-red">
-            <a href="#" class="icono-red"><i class="fab fa-google"></i></a>
+          
+          <!-- CHECKBOX DE TÉRMINOS Y CONDICIONES (SOLO EN REGISTRO) -->
+          <div class="terminos-condiciones">
+            <label class="checkbox-container">
+              <input type="checkbox" id="aceptoTerminos" required>
+              <span class="checkmark"></span>
+              <span class="terminos-texto">
+                Acepto los <a href="#" class="link-terminos" onclick="mostrarTerminos()">Términos y Condiciones</a> 
+                y la <a href="#" class="link-terminos" onclick="mostrarPolitica()">Política de Privacidad</a>
+              </span>
+            </label>
           </div>
+          
+          <input type="submit" class="btn" value="Registrarse" id="btnRegistrar" />
+          
+          <!-- NO BOTÓN GOOGLE EN REGISTRO -->
+          <p class="texto-volver">
+            <a href="index.html" style="color: #667eea; text-decoration: none;">
+              <i class="fas fa-arrow-left"></i> Volver al inicio
+            </a>
+          </p>
         </form>
 
         <!-- Mensaje dinámico -->
@@ -86,8 +109,376 @@
 
   </div> <!-- Cierre contenedor-principal -->
 
-  <!-- JS: animaciones y registro -->
+  <!-- Modal para Términos y Condiciones (oculto) -->
+  <div id="modalTerminos" class="modal-terminos">
+    <div class="modal-contenido">
+      <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+      <h2>Términos y Condiciones</h2>
+      <div class="modal-body">
+        <h3>1. Aceptación de los Términos</h3>
+        <p>Al registrarte en Aury, aceptas cumplir con estos términos y condiciones. Aury es una plataforma de apoyo emocional basada en IA.</p>
+        
+        <h3>2. Uso del Servicio</h3>
+        <p>Aury está diseñado para brindar apoyo emocional y no sustituye la atención profesional de psicólogos o psiquiatras.</p>
+        
+        <h3>3. Responsabilidad del Usuario</h3>
+        <p>Eres responsable de mantener la confidencialidad de tu cuenta y contraseña. No compartas tus credenciales con terceros.</p>
+        
+        <h3>4. Limitación de Responsabilidad</h3>
+        <p>Aury no se hace responsable por decisiones tomadas basadas en las interacciones con la IA. En caso de crisis emocional, contacta a profesionales de la salud.</p>
+        
+        <h3>5. Modificaciones</h3>
+        <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios serán notificados a través de la plataforma.</p>
+      </div>
+      <button class="btn-modal" onclick="cerrarModal()">Entendido</button>
+    </div>
+  </div>
+
+  <!-- Modal para Política de Privacidad (oculto) -->
+  <div id="modalPolitica" class="modal-terminos">
+    <div class="modal-contenido">
+      <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+      <h2>Política de Privacidad</h2>
+      <div class="modal-body">
+        <h3>1. Información que Recopilamos</h3>
+        <p>Recopilamos información que nos proporcionas al registrarte: nombre, correo electrónico y contraseña.</p>
+        
+        <h3>2. Uso de la Información</h3>
+        <p>Utilizamos tu información para:
+          <ul>
+            <li>Personalizar tu experiencia en Aury</li>
+            <li>Mejorar nuestros servicios</li>
+            <li>Mantener la seguridad de tu cuenta</li>
+            <li>Enviar actualizaciones importantes</li>
+          </ul>
+        </p>
+        
+        <h3>3. Protección de Datos</h3>
+        <p>Implementamos medidas de seguridad para proteger tu información personal. Tu contraseña está encriptada.</p>
+        
+        <h3>4. Confidencialidad de las Conversaciones</h3>
+        <p>Las conversaciones con Aury son confidenciales. No compartamos el contenido de tus chats con terceros.</p>
+        
+        <h3>5. Tus Derechos</h3>
+        <p>Tienes derecho a acceder, corregir o eliminar tu información personal. Contacta a soporte para ejercer estos derechos.</p>
+      </div>
+      <button class="btn-modal" onclick="cerrarModal()">Entendido</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="registro.js"></script>
   <script src="aplicacion.js"></script>
+  
+  <!-- Estilos para los modales y checkbox -->
+  <style>
+    /* Estilos para el checkbox de términos (SOLO EN REGISTRO) */
+    .terminos-condiciones {
+      margin: 15px 0 20px 0;
+      padding: 10px;
+      background: rgba(102, 126, 234, 0.05);
+      border-radius: 8px;
+      border-left: 4px solid #667eea;
+    }
+    
+    .checkbox-container {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      cursor: pointer;
+      font-size: 14px;
+      user-select: none;
+      line-height: 1.5;
+    }
+    
+    .checkbox-container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+    
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: #fff;
+      border: 2px solid #667eea;
+      border-radius: 4px;
+    }
+    
+    .checkbox-container:hover input ~ .checkmark {
+      background-color: #f0f4ff;
+    }
+    
+    .checkbox-container input:checked ~ .checkmark {
+      background-color: #667eea;
+    }
+    
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+    
+    .checkbox-container input:checked ~ .checkmark:after {
+      display: block;
+    }
+    
+    .checkbox-container .checkmark:after {
+      left: 6px;
+      top: 2px;
+      width: 5px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    
+    .terminos-texto {
+      color: #333;
+    }
+    
+    .link-terminos {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .link-terminos:hover {
+      text-decoration: underline;
+    }
+    
+    /* Estilos para el botón de Google (SOLO EN INICIO SESIÓN) */
+    .iconos-redes {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    
+    .icono-red {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: white;
+      border-radius: 50%;
+      color: #DB4437;
+      font-size: 20px;
+      border: 2px solid #eee;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+    
+    .icono-red:hover {
+      background: #f8f9fa;
+      border-color: #DB4437;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(219, 68, 55, 0.2);
+    }
+    
+    /* Estilos para los modales */
+    .modal-terminos {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s;
+    }
+    
+    .modal-contenido {
+      background-color: white;
+      margin: 5% auto;
+      padding: 30px;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 700px;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+      animation: slideIn 0.3s;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .cerrar-modal {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #666;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .cerrar-modal:hover {
+      color: #333;
+    }
+    
+    .modal-contenido h2 {
+      color: #667eea;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f0f4ff;
+    }
+    
+    .modal-body {
+      margin: 20px 0;
+      line-height: 1.6;
+    }
+    
+    .modal-body h3 {
+      color: #555;
+      margin: 15px 0 8px 0;
+      font-size: 1.1rem;
+    }
+    
+    .modal-body p, .modal-body ul {
+      margin-bottom: 15px;
+      color: #666;
+    }
+    
+    .modal-body ul {
+      padding-left: 20px;
+    }
+    
+    .modal-body li {
+      margin-bottom: 5px;
+    }
+    
+    .btn-modal {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 20px;
+      display: block;
+      margin-left: auto;
+      transition: all 0.3s;
+    }
+    
+    .btn-modal:hover {
+      background: #5a6fd8;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .modal-contenido {
+        width: 95%;
+        margin: 10% auto;
+        padding: 20px;
+      }
+      
+      .terminos-texto {
+        font-size: 13px;
+      }
+      
+      .icono-red {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
+    }
+  </style>
+  
+  <!-- Script para manejar los modales -->
+  <script>
+    // Función para mostrar términos y condiciones
+    function mostrarTerminos() {
+      event.preventDefault();
+      document.getElementById('modalTerminos').style.display = 'block';
+    }
+    
+    // Función para mostrar política de privacidad
+    function mostrarPolitica() {
+      event.preventDefault();
+      document.getElementById('modalPolitica').style.display = 'block';
+    }
+    
+    // Función para cerrar modales
+    function cerrarModal() {
+      document.getElementById('modalTerminos').style.display = 'none';
+      document.getElementById('modalPolitica').style.display = 'none';
+    }
+    
+    // Cerrar modal al hacer click fuera del contenido
+    window.onclick = function(event) {
+      const modales = document.querySelectorAll('.modal-terminos');
+      modales.forEach(modal => {
+        if (event.target == modal) {
+          modal.style.display = 'none';
+        }
+      });
+    }
+    
+    // Validar checkbox antes de enviar el formulario de REGISTRO
+    document.addEventListener('DOMContentLoaded', function() {
+      const formularioRegistro = document.getElementById('registroForm');
+      const checkbox = document.getElementById('aceptoTerminos');
+      const btnRegistrar = document.getElementById('btnRegistrar');
+      
+      // Solo aplicar validación al formulario de REGISTRO
+      if (formularioRegistro) {
+        formularioRegistro.addEventListener('submit', function(e) {
+          if (!checkbox.checked) {
+            e.preventDefault();
+            Swal.fire({
+              icon: 'warning',
+              title: 'Términos y Condiciones',
+              text: 'Debes aceptar los Términos y Condiciones y la Política de Privacidad para registrarte.',
+              confirmButtonColor: '#667eea'
+            });
+            return false;
+          }
+        });
+      }
+      
+      // Cambiar estilo del botón de REGISTRO cuando se marca el checkbox
+      if (checkbox && btnRegistrar) {
+        checkbox.addEventListener('change', function() {
+          if (this.checked) {
+            btnRegistrar.style.opacity = '1';
+            btnRegistrar.style.cursor = 'pointer';
+            btnRegistrar.disabled = false;
+          } else {
+            btnRegistrar.style.opacity = '0.7';
+            btnRegistrar.style.cursor = 'not-allowed';
+            btnRegistrar.disabled = true;
+          }
+        });
+        
+        // Estado inicial del botón de REGISTRO
+        btnRegistrar.style.opacity = '0.7';
+        btnRegistrar.style.cursor = 'not-allowed';
+        btnRegistrar.disabled = true;
+      }
+    });
+  </script>
 
 </body>
 </html>
